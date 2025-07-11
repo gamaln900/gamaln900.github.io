@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upvoro - Software & Automation Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-bg: #F4F4F4;
+            --text-primary: #2E2E2E;
+            --accent-blue: #4A90E2;
+            --accent-green: #28A745;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --border-color: #E0E0E0;
+            --shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--primary-bg);
+            transition: all 0.3s ease;
+        }
+
+        /* Arabic Typography */
+        [dir="rtl"] {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.2em;
+        }
+
+        [dir="rtl"] .hero h1 {
+            font-size: 3.5rem;
+        }
+
+        [dir="rtl"] .hero p {
+            font-size: 1.4rem;
+        }
+
+        [dir="rtl"] h2 {
+            font-size: 2.2rem;
+        }
+
+        [dir="rtl"] p, [dir="rtl"] li {
+            font-size: 1.1rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        .logo i {
+            color: var(--accent-green);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .lang-toggle {
+            background: var(--accent-blue);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            background: var(--accent-green);
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-green) 100%);
+            color: var(--white);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: var(--white);
+            color: var(--accent-blue);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--accent-blue);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .about-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 4rem;
+            color: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .portfolio-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-meta {
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--accent-blue);
+            transform: scale(1.05);
+        }
+
+        .pricing-card h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .testimonial-stars {
+            color: var(--accent-green);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--accent-blue);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-green);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            [dir="rtl"] .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Hidden content for language switching */
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Upvoro Logo" style="height: 40px; width: 200px;">
+                
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="nav-item" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                <li><a href="#about" class="nav-item" data-en="About" data-ar="من نحن">About</a></li>
+                <li><a href="#portfolio" class="nav-item" data-en="Portfolio" data-ar="الأعمال">Portfolio</a></li>
+                <li><a href="#blog" class="nav-item" data-en="Blog" data-ar="المدونة">Blog</a></li>
+                <li><a href="#pricing" class="nav-item" data-en="Pricing" data-ar="الأسعار">Pricing</a></li>
+                <li><a href="#contact" class="nav-item" data-en="Contact" data-ar="تواصل معنا">Contact</a></li>
+            </ul>
+            <button class="lang-toggle" onclick="toggleLanguage()">العربية</button>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="lang-content active" id="heroEn">
+                <h1>Software & Automation Solutions</h1>
+                <p>Flutter apps, Web/Desktop software & Python automation</p>
+                <a href="https://wa.me/201010583759" class="cta-button">
+                    <i class="fab fa-whatsapp"></i> Contact on WhatsApp
+                </a>
+            </div>
+            <div class="lang-content" id="heroAr">
+                <h1>حلول برمجية وأتمتة</h1>
+                <p>تطبيقات Flutter، برامج الويب وسطح المكتب وأتمتة Python</p>
+                <a href="https://wa.me/201010583759" class="cta-button">
+                    <i class="fab fa-whatsapp"></i> تواصل عبر واتساب
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="lang-content active" id="aboutEn">
+            <h2>About & Services</h2>
+            <div class="about-grid">
+                <div class="about-image">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div>
+                    <p>I'm a skilled Flutter developer and automation specialist, building innovative mobile, web, and desktop applications. With expertise in Python and n8n automation, I create efficient solutions that streamline business processes and enhance user experiences.</p>
+                </div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fab fa-flutter"></i>
+                    <h3>Flutter Development</h3>
+                    <p>Cross-platform mobile, web, and desktop applications using Flutter framework for optimal performance.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fab fa-python"></i>
+                    <h3>Python Automation</h3>
+                    <p>Custom automation scripts and tools to streamline workflows and improve productivity.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>n8n Automation</h3>
+                    <p>Workflow automation using n8n for seamless integration between different services and platforms.</p>
+                </div>
+            </div>
+        </div>
+        <div class="lang-content" id="aboutAr">
+            <h2>من نحن وخدماتنا</h2>
+            <div class="about-grid">
+                <div class="about-image">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div>
+                    <p>أنا مطور Flutter ماهر ومتخصص في الأتمتة، أقوم ببناء تطبيقات مبتكرة للهواتف المحمولة والويب وسطح المكتب. مع خبرة في Python وأتمتة n8n، أنشئ حلولاً فعالة تسهل العمليات التجارية وتحسن تجربة المستخدم.</p>
+                </div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fab fa-flutter"></i>
+                    <h3>تطوير Flutter</h3>
+                    <p>تطبيقات متعددة المنصات للهواتف المحمولة والويب وسطح المكتب باستخدام إطار عمل Flutter للأداء الأمثل.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fab fa-python"></i>
+                    <h3>أتمتة Python</h3>
+                    <p>نصوص وأدوات أتمتة مخصصة لتبسيط سير العمل وتحسين الإنتاجية.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>أتمتة n8n</h3>
+                    <p>أتمتة سير العمل باستخدام n8n للتكامل السلس بين الخدمات والمنصات المختلفة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section" id="portfolio">
+        <div class="lang-content active" id="portfolioEn">
+            <h2>Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>E-Commerce Flutter App</h3>
+                        <p>A complete e-commerce mobile application with payment integration, user authentication, and real-time order tracking.</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Business Automation Suite</h3>
+                        <p>Python-based automation system for inventory management, customer communications, and reporting.</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Desktop Management Tool</h3>
+                        <p>Cross-platform desktop application for project management with real-time collaboration features.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lang-content" id="portfolioAr">
+            <h2>معرض الأعمال</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>تطبيق التجارة الإلكترونية</h3>
+                        <p>تطبيق محمول متكامل للتجارة الإلكترونية مع تكامل المدفوعات ومصادقة المستخدم وتتبع الطلبات في الوقت الفعلي.</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>نظام أتمتة الأعمال</h3>
+                        <p>نظام أتمتة مبني على Python لإدارة المخزون والتواصل مع العملاء وإعداد التقارير.</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>أداة إدارة سطح المكتب</h3>
+                        <p>تطبيق سطح مكتب متعدد المنصات لإدارة المشاريع مع ميزات التعاون في الوقت الفعلي.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="section" id="blog">
+        <div class="lang-content active" id="blogEn">
+            <h2>Blog</h2>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="portfolio-content">
+                        <div class="blog-meta">March 2024</div>
+                        <h3>Getting Started with Flutter Web</h3>
+                        <p>A comprehensive guide to building responsive web applications using Flutter framework...</p>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="portfolio-content">
+                        <div class="blog-meta">February 2024</div>
+                        <h3>Python Automation Best Practices</h3>
+                        <p>Learn how to create efficient automation scripts that save time and reduce errors...</p>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="portfolio-content">
+                        <div class="blog-meta">January 2024</div>
+                        <h3>n8n Workflow Optimization</h3>
+                        <p>Tips and tricks for building scalable automation workflows with n8n...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lang-content" id="blogAr">
+            <h2>المدونة</h2>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="portfolio-content">
+                        <div class="blog-meta">مارس 2024</div>
+                        <h3>البدء مع Flutter Web</h3>
+                        <p>دليل شامل لبناء تطبيقات الويب المتجاوبة باستخدام إطار عمل Flutter...</p>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="portfolio-content">
+                        <div class="blog-meta">فبراير 2024</div>
+                        <h3>أفضل ممارسات أتمتة Python</h3>
+                        <p>تعلم كيفية إنشاء نصوص أتمتة فعالة توفر الوقت وتقلل الأخطاء...</p>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="portfolio-content">
+                        <div class="blog-meta">يناير 2024</div>
+                        <h3>تحسين سير العمل في n8n</h3>
+                        <p>نصائح وحيل لبناء سير عمل أتمتة قابل للتطوير مع n8n...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+        <div class="lang-content active" id="pricingEn">
+            <h2>Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price">$500</div>
+                    <ul class="pricing-features">
+                        <li>Simple mobile app</li>
+                        <li>Basic UI/UX design</li>
+                        <li>1 month support</li>
+                        <li>Source code included</li>
+                    </ul>
+                    <button class="cta-button">Get Started</button>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Standard</h3>
+                    <div class="price">$1,200</div>
+                    <ul class="pricing-features">
+                        <li>Cross-platform app</li>
+                        <li>Advanced features</li>
+                        <li>API integration</li>
+                        <li>3 months support</li>
+                        <li>Deployment assistance</li>
+                    </ul>
+                    <button class="cta-button">Most Popular</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Premium</h3>
+                    <div class="price">$2,500</div>
+                    <ul class="pricing-features">
+                        <li>Enterprise solution</li>
+                        <li>Custom automation</li>
+                        <li>Database integration</li>
+                        <li>6 months support</li>
+                        <li>Training included</li>
+                    </ul>
+                    <button class="cta-button">Contact Us</button>
+                </div>
+            </div>
+        </div>
+        <div class="lang-content" id="pricingAr">
+            <h2>الأسعار</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>الأساسي</h3>
+                    <div class="price">$500</div>
+                    <ul class="pricing-features">
+                        <li>تطبيق محمول بسيط</li>
+                        <li>تصميم UI/UX أساسي</li>
+                        <li>دعم لمدة شهر واحد</li>
+                        <li>الكود المصدري متضمن</li>
+                    </ul>
+                    <button class="cta-button">ابدأ الآن</button>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>المتقدم</h3>
+                    <div class="price">$1,200</div>
+                    <ul class="pricing-features">
+                        <li>تطبيق متعدد المنصات</li>
+                        <li>ميزات متقدمة</li>
+                        <li>تكامل API</li>
+                        <li>دعم لمدة 3 أشهر</li>
+                        <li>مساعدة في النشر</li>
+                    </ul>
+                    <button class="cta-button">الأكثر شعبية</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>المميز</h3>
+                    <div class="price">$2,500</div>
+                    <ul class="pricing-features">
+                        <li>حل مؤسسي</li>
+                        <li>أتمتة مخصصة</li>
+                        <li>تكامل قاعدة البيانات</li>
+                        <li>دعم لمدة 6 أشهر</li>
+                        <li>التدريب متضمن</li>
+                    </ul>
+                    <button class="cta-button">تواصل معنا</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+        <div class="lang-content active" id="testimonialsEn">
+            <h2>Client Testimonials</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Upvoro delivered an exceptional Flutter app that exceeded our expectations. The automation features saved us countless hours of manual work."</p>
+                    <div class="testimonial-author">- Sarah Ahmed, CEO TechStart</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Professional, reliable, and innovative. The Python automation scripts transformed our business operations completely."</p>
+                    <div class="testimonial-author">- Mohamed Hassan, Operations Manager</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Outstanding cross-platform development skills. Our app works flawlessly on all devices and platforms."</p>
+                    <div class="testimonial-author">- Lisa Chen, Product Manager</div>
+                </div>
+            </div>
+        </div>
+        <div class="lang-content" id="testimonialsAr">
+            <h2>آراء العملاء</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"قدم Upvoro تطبيق Flutter استثنائي فاق توقعاتنا. ميزات الأتمتة وفرت علينا ساعات لا تحصى من العمل اليدوي."</p>
+                    <div class="testimonial-author">- سارة أحمد، الرئيس التنفيذي TechStart</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"مهني وموثوق ومبتكر. نصوص أتمتة Python غيرت عمليات أعمالنا بالكامل."</p>
+                    <div class="testimonial-author">- محمد حسن، مدير العمليات</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"مهارات تطوير متعددة المنصات رائعة. تطبيقنا يعمل بسلاسة على جميع الأجهزة والمنصات."</p>
+                    <div class="testimonial-author">- ليزا تشين، مدير المنتج</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="lang-content active" id="contactEn">
+            <h2>Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <strong>WhatsApp</strong>
+                            <p>+20 1010 583759</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <p>gamal.nasser.dev@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Response Time</strong>
+                            <p>Within 24 hours</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="lang-content" id="contactAr">
+            <h2>تواصل معنا</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>ابق على تواصل</h3>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <strong>واتساب</strong>
+                            <p>+20 1010 583759</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>البريد الإلكتروني</strong>
+                            <p>gamal.nasser.dev@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>وقت الاستجابة</strong>
+                            <p>خلال 24 ساعة</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>إرسال رسالة</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="nameAr">الاسم</label>
+                            <input type="text" id="nameAr" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailAr">البريد الإلكتروني</label>
+                            <input type="email" id="emailAr" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subjectAr">الموضوع</label>
+                            <input type="text" id="subjectAr" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="messageAr">الرسالة</label>
+                            <textarea id="messageAr" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="lang-content active" id="footerEn">
+            <p>&copy; 2024 Upvoro. All rights reserved. | Software & Automation Solutions</p>
+        </div>
+        <div class="lang-content" id="footerAr">
+            <p>&copy; 2024 Upvoro. جميع الحقوق محفوظة. | حلول برمجية وأتمتة</p>
+        </div>
+    </footer>
+
+    <script>
+        let isArabic = false;
+
+        function toggleLanguage() {
+            isArabic = !isArabic;
+            const html = document.documentElement;
+            const langToggle = document.querySelector('.lang-toggle');
+            
+            if (isArabic) {
+                html.setAttribute('lang', 'ar');
+                html.setAttribute('dir', 'rtl');
+                langToggle.textContent = 'English';
+                
+                // Hide English content, show Arabic content
+                document.querySelectorAll('.lang-content').forEach(el => {
+                    el.classList.remove('active');
+                });
+                document.querySelectorAll('[id$="Ar"]').forEach(el => {
+                    el.classList.add('active');
+                });
+                
+                // Update navigation items
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.textContent = item.getAttribute('data-ar');
+                });
+            } else {
+                html.setAttribute('lang', 'en');
+                html.setAttribute('dir', 'ltr');
+                langToggle.textContent = 'العربية';
+                
+                // Hide Arabic content, show English content
+                document.querySelectorAll('.lang-content').forEach(el => {
+                    el.classList.remove('active');
+                });
+                document.querySelectorAll('[id$="En"]').forEach(el => {
+                    el.classList.add('active');
+                });
+                
+                // Update navigation items
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.textContent = item.getAttribute('data-en');
+                });
+            }
+        }
+
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.style.display = navLinks.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert(isArabic ? 'شكراً لتواصلك معنا! سنرد عليك قريباً.' : 'Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.style.background = 'var(--white)';
+                nav.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.service-card, .portfolio-card, .blog-card, .pricing-card, .testimonial-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
